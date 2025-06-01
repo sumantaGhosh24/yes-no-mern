@@ -165,19 +165,10 @@ const userCtrl = {
 
           await User.findByIdAndUpdate(us._id, {status: "active"});
 
-          const accesstoken = createAccessToken({
-            id: us._id,
+          res.json({
+            message:
+              "Now your account was activated login using your credentials.",
           });
-          const refreshtoken = createRefreshToken({
-            id: us._id,
-          });
-          res.cookie("refreshtoken", refreshtoken, {
-            httpOnly: true,
-            path: "/api/v1/refresh_token",
-            maxAge: 7 * 24 * 60 * 60 * 1000,
-          });
-
-          res.json({accesstoken, ...us._doc});
           return;
         }
       );
@@ -703,31 +694,12 @@ const userCtrl = {
       return;
     }
   },
-  deleteUser: async (req: Request, res: Response) => {
-    try {
-      const user = await User.findByIdAndDelete(req.params.id);
-      if (!user) {
-        res.status(400).json({message: "User does not exists."});
-        return;
-      }
-
-      res.json({message: "User Deleted."});
-      return;
-    } catch (error: any) {
-      res.status(500).json({message: error.message});
-      return;
-    }
-  },
   getUsers: async (req: Request, res: Response) => {
     try {
       const features = new APIFeatures(User.find(), req.query)
         .paginating()
-        .sorting()
-        .searching()
-        .filtering();
-      const features2 = new APIFeatures(User.find(), req.query)
-        .searching()
-        .filtering();
+        .sorting();
+      const features2 = new APIFeatures(User.find(), req.query);
 
       const result = await Promise.allSettled([
         features.query,

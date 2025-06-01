@@ -36,8 +36,6 @@ router.put("/user-address", auth, userCtrl.userAddress);
 
 router.post("/reset-password", auth, userCtrl.resetPassword);
 
-router.delete("/user/:id", authAdmin, userCtrl.deleteUser);
-
 router.get("/users", authAdmin, userCtrl.getUsers);
 
 export default router;

@@ -1,24 +1,62 @@
-import ModeToggle from "./components/mode-toggle";
-import {usePrimaryColor} from "./components/primary-provider";
-import PrimaryToggle from "./components/primary-toggle";
+import {Route, Routes} from "react-router-dom";
+import {ToastContainer} from "react-toastify";
 
-function App() {
-  const {primaryColor} = usePrimaryColor();
+import "react-toastify/dist/ReactToastify.css";
 
+import {
+  AuthLayout,
+  Layout,
+  PersistLogin,
+  RequireUser,
+  RequireAdmin,
+} from "./components";
+import {
+  Public,
+  Register,
+  Login,
+  Home,
+  Profile,
+  RegisterVerify,
+  LoginVerify,
+  ForgotPassword,
+  ConfirmForgotPassword,
+  Users,
+} from "./pages";
+
+const App = () => {
   return (
-    <div className="flex items-center justify-center flex-col gap-3 bg-white dark:bg-black p-10">
-      <ModeToggle />
-      <PrimaryToggle />
-      <h1 className={`text-${primaryColor}-500 text-2xl font-bold`}>
-        Yes No MERN
-      </h1>
-      <button
-        className={`bg-${primaryColor}-700 text-white px-4 py-2 rounded-md hover:bg-${primaryColor}-800 transition-colors disabled:bg-${primaryColor}-300 my-5`}
-      >
-        Click Me
-      </button>
-    </div>
+    <>
+      <ToastContainer />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Public />} />
+          <Route path="login" element={<Login />} />
+          <Route path="login-verify" element={<LoginVerify />} />
+          <Route path="register" element={<Register />} />
+          <Route path="register-verify" element={<RegisterVerify />} />
+          <Route path="forgot-password" element={<ForgotPassword />} />
+          <Route
+            path="confirm-forgot-password"
+            element={<ConfirmForgotPassword />}
+          />
+          <Route element={<PersistLogin />}>
+            <Route element={<AuthLayout />}>
+              <Route path="home" element={<RequireUser elm={<Home />} />} />
+              <Route
+                path="profile"
+                element={<RequireUser elm={<Profile />} />}
+              />
+              <Route path="users" element={<RequireAdmin elm={<Users />} />} />
+              {/* <Route
+                path="details-question/:id"
+                element={<RequireAdmin elm={<Question />} />}
+              /> */}
+            </Route>
+          </Route>
+        </Route>
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;
