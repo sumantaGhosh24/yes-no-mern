@@ -103,7 +103,7 @@ const Users = () => {
 
   return (
     <>
-      <section className="container p-6 mx-auto my-20 shadow-md rounded-md">
+      <section className="container p-6 mx-auto my-20 shadow-md rounded-md bg-white dark:bg-black shadow-black dark:shadow-white">
         <h2 className="text-3xl font-bold capitalize mb-10">Manage Users</h2>
         {content}
         <div className="my-5 flex align-center justify-center">

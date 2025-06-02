@@ -33,6 +33,12 @@ const AuthHeader = () => {
         <li className="text-white hover:text-gray-300 transition-all">
           <Link to="/users">Users</Link>
         </li>
+        <li className="text-white hover:text-gray-300 transition-all">
+          <Link to="/categories">Categories</Link>
+        </li>
+        <li className="text-white hover:text-gray-300 transition-all">
+          <Link to="/questions">Questions</Link>
+        </li>
       </>
     );
   }

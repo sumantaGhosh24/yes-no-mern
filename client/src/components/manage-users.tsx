@@ -15,11 +15,11 @@ const ManageUsers = ({userId}: ManageUsersProps) => {
     return (
       <tr className="bg-gray-200 dark:bg-neutral-400 border-b text-base font-bold">
         <td className="px-6 py-4">{user.id}</td>
-        <td className="px-6 py-4 capitalize">
+        <td className="px-6 py-4 capitalize truncate">
           {user.firstName} {user.lastName}
         </td>
-        <td className="px-6 py-4 capitalize">{user.email}</td>
-        <td className="px-6 py-4 capitalize">{user.mobileNumber}</td>
+        <td className="px-6 py-4">{user.email}</td>
+        <td className="px-6 py-4">{user.mobileNumber}</td>
         <td className="px-6 py-4">
           <img
             src={user?.image?.url}
@@ -27,7 +27,7 @@ const ManageUsers = ({userId}: ManageUsersProps) => {
             className="rounded-full h-16 w-16"
           />
         </td>
-        <td className="px-6 py-4 capitalize">{user.username}</td>
+        <td className="px-6 py-4">{user.username}</td>
         <td className="px-6 py-4 capitalize">
           {new Date(user.dob).toLocaleDateString()}
         </td>

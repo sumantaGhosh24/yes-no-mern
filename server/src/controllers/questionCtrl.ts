@@ -74,7 +74,7 @@ const questionCtrl = {
         return;
       }
 
-      if (minBet > maxBet) {
+      if (Number(minBet) > Number(maxBet)) {
         res.status(400).json({message: "Min bet should be less than max bet."});
         return;
       }
@@ -372,7 +372,7 @@ const questionCtrl = {
   },
   getQuestion: async (req: Request, res: Response) => {
     try {
-      const question = await Question.find({
+      const question = await Question.findOne({
         _id: req.params.id,
         result: "pending",
       })

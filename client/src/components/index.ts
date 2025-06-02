@@ -18,6 +18,10 @@ import UpdateProfileAddress from "./update-profile-address";
 import UpdateProfileData from "./update-profile-data";
 import UpdateProfileImage from "./update-profile-image";
 import ManageUsers from "./manage-users";
+import ManageCategories from "./manage-categories";
+import EditCategoryForm from "./edit-category-form";
+import ManageQuestions from "./manage-questions";
+import EditQuestionForm from "./edit-question-form";
 
 export {
   ThemeProvider,
@@ -40,4 +44,8 @@ export {
   UpdateProfileData,
   UpdateProfileImage,
   ManageUsers,
+  ManageCategories,
+  EditCategoryForm,
+  ManageQuestions,
+  EditQuestionForm,
 };

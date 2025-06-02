@@ -15,21 +15,6 @@ const categoryCtrl = {
       return;
     }
   },
-  getCategory: async (req: Request, res: Response) => {
-    try {
-      const category = await Category.findById(req.params.id);
-      if (!category) {
-        res.status(400).json({message: "Category does not exists."});
-        return;
-      }
-
-      res.json(category);
-      return;
-    } catch (error: any) {
-      res.status(500).json({message: error.message});
-      return;
-    }
-  },
   createCategory: async (req: Request, res: Response) => {
     try {
       const {name, image} = req.body;
@@ -82,7 +67,7 @@ const categoryCtrl = {
   deleteCategory: async (req: Request, res: Response) => {
     try {
       const question = await Question.findOne({category: req.params.id});
-      if (!question) {
+      if (question) {
         res.status(400).json({
           message: "Please delete all question of this category first.",
         });

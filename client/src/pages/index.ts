@@ -8,6 +8,13 @@ import Profile from "./profile";
 import ForgotPassword from "./forgot-password";
 import ConfirmForgotPassword from "./confirm-forgot-password";
 import Users from "./users";
+import Categories from "./categories";
+import CreateCategory from "./create-category";
+import UpdateCategory from "./update-category";
+import Questions from "./questions";
+import CreateQuestion from "./create-question";
+import UpdateQuestion from "./update-question";
+import DetailsQuestion from "./details-question";
 
 export {
   Public,
@@ -20,4 +27,11 @@ export {
   ForgotPassword,
   ConfirmForgotPassword,
   Users,
+  Categories,
+  CreateCategory,
+  UpdateCategory,
+  Questions,
+  CreateQuestion,
+  UpdateQuestion,
+  DetailsQuestion,
 };

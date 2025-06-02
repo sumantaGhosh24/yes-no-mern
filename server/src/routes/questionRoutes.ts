@@ -6,15 +6,15 @@ import authAdmin from "../middleware/authAdmin";
 
 const router = express.Router();
 
-// router.get("/admin/questions", authAdmin, questionCtrl.getQuestionsAdmin);
+router.get("/admin/questions", authAdmin, questionCtrl.getQuestionsAdmin);
 
-// router.get("/admin/question/:id", authAdmin, questionCtrl.getQuestionAdmin);
+router.get("/admin/question/:id", authAdmin, questionCtrl.getQuestionAdmin);
 
-// router.post("/question", authAdmin, questionCtrl.createQuestion);
+router.post("/question", authAdmin, questionCtrl.createQuestion);
 
-// router.put("/question/:id", authAdmin, questionCtrl.updateQuestion);
+router.put("/question/:id", authAdmin, questionCtrl.updateQuestion);
 
-// router.delete("/question/:id", authAdmin, questionCtrl.deleteQuestion);
+router.delete("/question/:id", authAdmin, questionCtrl.deleteQuestion);
 
 // router.get("/admin/entrys", authAdmin, questionCtrl.getAllEntrys);
 
@@ -24,9 +24,9 @@ const router = express.Router();
 
 // router.post("/question/result/:id", authAdmin, questionCtrl.declareResult);
 
-// router.get("/questions", auth, questionCtrl.getQuestions);
+router.get("/questions", auth, questionCtrl.getQuestions);
 
-// router.get("/question/:id", auth, questionCtrl.getQuestion);
+router.get("/question/:id", auth, questionCtrl.getQuestion);
 
 // router.post("/question/:id", auth, questionCtrl.addEntry);
 

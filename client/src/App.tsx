@@ -21,6 +21,13 @@ import {
   ForgotPassword,
   ConfirmForgotPassword,
   Users,
+  Categories,
+  CreateCategory,
+  UpdateCategory,
+  Questions,
+  CreateQuestion,
+  UpdateQuestion,
+  DetailsQuestion,
 } from "./pages";
 
 const App = () => {
@@ -47,10 +54,34 @@ const App = () => {
                 element={<RequireUser elm={<Profile />} />}
               />
               <Route path="users" element={<RequireAdmin elm={<Users />} />} />
-              {/* <Route
+              <Route
+                path="categories"
+                element={<RequireAdmin elm={<Categories />} />}
+              />
+              <Route
+                path="create-category"
+                element={<RequireAdmin elm={<CreateCategory />} />}
+              />
+              <Route
+                path="update-category/:id"
+                element={<RequireAdmin elm={<UpdateCategory />} />}
+              />
+              <Route
+                path="questions"
+                element={<RequireAdmin elm={<Questions />} />}
+              />
+              <Route
+                path="create-question"
+                element={<RequireAdmin elm={<CreateQuestion />} />}
+              />
+              <Route
+                path="update-question/:id"
+                element={<RequireAdmin elm={<UpdateQuestion />} />}
+              />
+              <Route
                 path="details-question/:id"
-                element={<RequireAdmin elm={<Question />} />}
-              /> */}
+                element={<RequireUser elm={<DetailsQuestion />} />}
+              />
             </Route>
           </Route>
         </Route>
