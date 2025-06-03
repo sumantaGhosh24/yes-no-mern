@@ -22,6 +22,12 @@ import ManageCategories from "./manage-categories";
 import EditCategoryForm from "./edit-category-form";
 import ManageQuestions from "./manage-questions";
 import EditQuestionForm from "./edit-question-form";
+import Deposit from "./deposit";
+import Withdraw from "./withdraw";
+import WalletHeader from "./wallet-header";
+import Transactions from "./transactions";
+import ManageTransactions from "./manage-transactions";
+import AdminManageTransactions from "./admin-manage-transactions";
 
 export {
   ThemeProvider,
@@ -48,4 +54,10 @@ export {
   EditCategoryForm,
   ManageQuestions,
   EditQuestionForm,
+  Deposit,
+  Withdraw,
+  WalletHeader,
+  Transactions,
+  ManageTransactions,
+  AdminManageTransactions,
 };

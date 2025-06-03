@@ -28,6 +28,8 @@ import {
   CreateQuestion,
   UpdateQuestion,
   DetailsQuestion,
+  Wallet,
+  Transactions,
 } from "./pages";
 
 const App = () => {
@@ -81,6 +83,11 @@ const App = () => {
               <Route
                 path="details-question/:id"
                 element={<RequireUser elm={<DetailsQuestion />} />}
+              />
+              <Route path="wallet" element={<RequireUser elm={<Wallet />} />} />
+              <Route
+                path="transactions"
+                element={<RequireAdmin elm={<Transactions />} />}
               />
             </Route>
           </Route>

@@ -17,7 +17,7 @@ export const walletApiSlice = apiSlice.injectEndpoints({
     }),
     verification: builder.mutation({
       query: (credentials) => ({
-        url: "/verification",
+        url: "/verify",
         method: "POST",
         body: {...credentials},
       }),
@@ -30,10 +30,10 @@ export const walletApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     getWallet: builder.query({
-      query: ({page, sort, category, search}) =>
-        `/wallet?limit=${page * 9}&${category}&${sort}&title[regex]=${search}`,
+      query: ({page, sort, category}) =>
+        `/wallet?limit=${page * 9}${category}${sort}`,
       transformResponse: (responseData) => {
-        const loadedWallet = responseData.map((wallet: any) => {
+        const loadedWallet = responseData.transactions.map((wallet: any) => {
           wallet.id = wallet._id;
           return wallet;
         });
@@ -42,40 +42,17 @@ export const walletApiSlice = apiSlice.injectEndpoints({
       providesTags: (result) => {
         if (result?.ids) {
           return [
-            {type: "Wallet", id: "LIST"},
-            ...result.ids.map((id: any) => ({type: "Wallet", id})),
+            {type: "Transaction", id: "LIST"},
+            ...result.ids.map((id: any) => ({type: "Transaction", id})),
           ];
-        } else return [{type: "Wallet", id: "LIST"}];
-      },
-    }),
-    getWalletById: builder.query({
-      query: ({page, sort, category, search, id}) =>
-        `/wallet/${id}?limit=${
-          page * 9
-        }&${category}&${sort}&title[regex]=${search}`,
-      transformResponse: (responseData) => {
-        const loadedWallet = responseData.map((wallet: any) => {
-          wallet.id = wallet._id;
-          return wallet;
-        });
-        return walletAdapter.setAll(initialState, loadedWallet);
-      },
-      providesTags: (result) => {
-        if (result?.ids) {
-          return [
-            {type: "Wallet", id: "LIST"},
-            ...result.ids.map((id: any) => ({type: "Wallet", id})),
-          ];
-        } else return [{type: "Wallet", id: "LIST"}];
+        } else return [{type: "Transaction", id: "LIST"}];
       },
     }),
     getAllTransactions: builder.query({
-      query: ({page, sort, category, search}) =>
-        `/all-transactions?limit=${
-          page * 9
-        }&${category}&${sort}&title[regex]=${search}`,
+      query: ({page, sort, category}) =>
+        `/all-transactions?limit=${page * 9}${category}${sort}`,
       transformResponse: (responseData) => {
-        const loadedWallet = responseData.map((wallet: any) => {
+        const loadedWallet = responseData.transactions.map((wallet: any) => {
           wallet.id = wallet._id;
           return wallet;
         });
@@ -84,10 +61,10 @@ export const walletApiSlice = apiSlice.injectEndpoints({
       providesTags: (result) => {
         if (result?.ids) {
           return [
-            {type: "Transactions", id: "LIST"},
-            ...result.ids.map((id: any) => ({type: "Transactions", id})),
+            {type: "Transaction", id: "LIST"},
+            ...result.ids.map((id: any) => ({type: "Transaction", id})),
           ];
-        } else return [{type: "Transactions", id: "LIST"}];
+        } else return [{type: "Transaction", id: "LIST"}];
       },
     }),
     penalty: builder.mutation({
@@ -96,16 +73,16 @@ export const walletApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: {...credentials},
       }),
+      invalidatesTags: [{type: "Transaction", id: "LIST"}],
     }),
   }),
 });
 
 export const {
-  // useDepositMutation,
-  // useGetAllTransactionsQuery,
-  // useGetWalletByIdQuery,
-  // useGetWalletQuery,
-  // usePenaltyMutation,
-  // useVerificationMutation,
-  // useWithdrawMutation,
+  useDepositMutation,
+  useVerificationMutation,
+  useWithdrawMutation,
+  useGetWalletQuery,
+  useGetAllTransactionsQuery,
+  usePenaltyMutation,
 } = walletApiSlice;

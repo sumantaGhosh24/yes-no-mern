@@ -1,6 +1,7 @@
 import {formatDistanceToNowStrict} from "date-fns";
 
 import {useGetAllUserQuery} from "../app/features/user/userApiSlice";
+import {formatterINR} from "../lib/utils";
 
 interface ManageUsersProps {
   userId: string;
@@ -36,6 +37,9 @@ const ManageUsers = ({userId}: ManageUsersProps) => {
         <td className="px-6 py-4 capitalize">{user.state}</td>
         <td className="px-6 py-4 capitalize">{user.country}</td>
         <td className="px-6 py-4 capitalize">{user.zip}</td>
+        <td className="px-6 py-4 capitalize">
+          {formatterINR.format(user.amount)}
+        </td>
         <td className="px-6 py-4 capitalize">{user.addressline}</td>
         <td className="px-6 py-4 capitalize">{user.role}</td>
         <td className="px-6 py-4 capitalize">{user.status}</td>

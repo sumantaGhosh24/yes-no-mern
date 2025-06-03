@@ -15,6 +15,8 @@ import Questions from "./questions";
 import CreateQuestion from "./create-question";
 import UpdateQuestion from "./update-question";
 import DetailsQuestion from "./details-question";
+import Wallet from "./wallet";
+import Transactions from "./transactions";
 
 export {
   Public,
@@ -34,4 +36,6 @@ export {
   CreateQuestion,
   UpdateQuestion,
   DetailsQuestion,
+  Wallet,
+  Transactions,
 };

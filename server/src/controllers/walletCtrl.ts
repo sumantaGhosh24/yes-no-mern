@@ -89,23 +89,27 @@ const walletCtrl = {
   },
   withdraw: async (req: IReqAuth, res: Response) => {
     try {
-      const {amount, upiId} = req.body;
+      const {amount} = req.body;
 
       if (req!.user!.amount < amount) {
         res.status(400).json({message: "Insufficient balance."});
         return;
       }
 
-      // const payoutOptions = {
-      //   account_number: upiId,
-      //   amount: Number(amount * 100),
-      //   currency: "INR",
-      //   mode: "UPI",
-      //   purpose: "payout",
-      //   queue_if_low_balance: false,
-      // };
-
-      // const payout = await instance.payouts.create(payoutOptions);
+      const newTransaction = new Transaction({
+        user: req?.user?._id,
+        amount: amount,
+        message: `${amount} INR withdrawn`,
+        status: "withdraw",
+        paymentResult: {
+          id: "orderId",
+          status: "success",
+          razorpay_order_id: "razorpayOrderId",
+          razorpay_payment_id: "razorpayPaymentId",
+          razorpay_signature: "razorpaySignature",
+        },
+      });
+      await newTransaction.save();
 
       await User.findByIdAndUpdate(req?.user?._id, {$inc: {amount: -amount}});
 
@@ -120,51 +124,6 @@ const walletCtrl = {
     try {
       const user = req?.user?._id;
       const amount = req?.user?.amount;
-
-      const features = new APIFeatures(
-        Transaction.find({user: user}),
-        req.query
-      )
-        .paginating()
-        .sorting();
-      const features2 = new APIFeatures(
-        Transaction.find({user: user}),
-        req.query
-      );
-
-      const result = await Promise.allSettled([
-        features.query,
-        features2.query,
-      ]);
-
-      const transactions =
-        result[0].status === "fulfilled" ? result[0].value : [];
-      const count =
-        result[1].status === "fulfilled" ? result[1].value.length : 0;
-
-      res.json({amount, transactions, count});
-      return;
-    } catch (error: any) {
-      res.status(500).json({message: error.message});
-      return;
-    }
-  },
-  getTransaction: async (req: IReqAuth, res: Response) => {
-    try {
-      const transaction = await Transaction.findById(req.params.id);
-
-      res.json(transaction);
-      return;
-    } catch (error: any) {
-      res.status(500).json({message: error.message});
-      return;
-    }
-  },
-  getWalletById: async (req: IReqAuth, res: Response) => {
-    try {
-      const user = req?.params?.user;
-
-      const amount = await User.findById(user).select("amount");
 
       const features = new APIFeatures(
         Transaction.find({user: user}),
@@ -239,6 +198,13 @@ const walletCtrl = {
         amount: amount,
         message: `${amount} INR penalty deducted`,
         status: "penalty",
+        paymentResult: {
+          id: "orderId",
+          status: "success",
+          razorpay_order_id: "razorpayOrderId",
+          razorpay_payment_id: "razorpayPaymentId",
+          razorpay_signature: "razorpaySignature",
+        },
       });
       await newTransaction.save();
 

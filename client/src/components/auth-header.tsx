@@ -39,6 +39,12 @@ const AuthHeader = () => {
         <li className="text-white hover:text-gray-300 transition-all">
           <Link to="/questions">Questions</Link>
         </li>
+        <li className="text-white hover:text-gray-300 transition-all">
+          <Link to="/transactions">Transactions</Link>
+        </li>
+        <li className="text-white hover:text-gray-300 transition-all">
+          <Link to="/wallet">Wallet</Link>
+        </li>
       </>
     );
   }
@@ -51,6 +57,9 @@ const AuthHeader = () => {
         </li>
         <li className="text-white hover:text-gray-300 transition-all">
           <Link to="/profile">Profile</Link>
+        </li>
+        <li className="text-white hover:text-gray-300 transition-all">
+          <Link to="/wallet">Wallet</Link>
         </li>
       </>
     );

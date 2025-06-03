@@ -145,7 +145,7 @@ const Home = () => {
         <button
           className={`w-fit bg-${primaryColor}-700 text-white px-4 py-2 rounded-md hover:bg-${primaryColor}-800 transition-colors disabled:bg-${primaryColor}-300 my-5`}
           onClick={() => setPage(page + 1)}
-          disabled={page * 9 >= question?.ids?.length}
+          disabled={page * 9 > question?.ids?.length}
         >
           Load More
         </button>
