@@ -188,76 +188,6 @@ const questionCtrl = {
       return;
     }
   },
-  getQuestionEntrys: async (req: Request, res: Response) => {
-    try {
-      const features = new APIFeatures(
-        Entry.find({question: req.params.id})
-          .populate("user", "_id username email mobileNumber image")
-          .populate("question", "question category"),
-        req.query
-      )
-        .paginating()
-        .sorting()
-        .searching()
-        .filtering();
-      const features2 = new APIFeatures(
-        Entry.find({question: req.params.id}),
-        req.query
-      )
-        .searching()
-        .filtering();
-
-      const result = await Promise.allSettled([
-        features.query,
-        features2.query,
-      ]);
-
-      const entries = result[0].status === "fulfilled" ? result[0].value : [];
-      const count =
-        result[1].status === "fulfilled" ? result[1].value.length : 0;
-
-      res.status(200).json({entries, count});
-      return;
-    } catch (error: any) {
-      res.status(500).json({message: error.message});
-      return;
-    }
-  },
-  getUserEntrys: async (req: Request, res: Response) => {
-    try {
-      const features = new APIFeatures(
-        Entry.find({user: req.params.id})
-          .populate("user", "_id username email mobileNumber image")
-          .populate("question", "question category"),
-        req.query
-      )
-        .paginating()
-        .sorting()
-        .searching()
-        .filtering();
-      const features2 = new APIFeatures(
-        Entry.find({user: req.params.id}),
-        req.query
-      )
-        .searching()
-        .filtering();
-
-      const result = await Promise.allSettled([
-        features.query,
-        features2.query,
-      ]);
-
-      const entries = result[0].status === "fulfilled" ? result[0].value : [];
-      const count =
-        result[1].status === "fulfilled" ? result[1].value.length : 0;
-
-      res.status(200).json({entries, count});
-      return;
-    } catch (error: any) {
-      res.status(500).json({message: error.message});
-      return;
-    }
-  },
   declareResult: async (req: Request, res: Response) => {
     try {
       const questionId = req.params.id;
@@ -281,16 +211,14 @@ const questionCtrl = {
 
       const winningEntries: IEntry[] = [];
       const losingEntries: IEntry[] = [];
-      let totalLosingBetAmount = 0;
 
       entries.forEach((entry) => {
-        if (entry.question.answer === req.body.answer) {
+        if (entry.answer === req.body.answer) {
           winningEntries.push(entry);
           entry.result = "success";
         } else {
           losingEntries.push(entry);
           entry.result = "failed";
-          totalLosingBetAmount += entry.bet;
         }
       });
 
@@ -308,21 +236,30 @@ const questionCtrl = {
           const winningUser = await User.findById(winningEntry.user._id);
 
           if (winningUser) {
-            const winningShare =
-              (winningEntry.bet / totalLosingBetAmount) * totalLosingBetAmount;
-            winningEntry.win = winningShare;
+            winningEntry.win = winningEntry.bet * 1.5;
             await winningEntry.save();
-            winningUser.amount += winningShare;
             await winningUser.save();
 
             const newTransaction = new Transaction({
               user: winningUser._id,
-              amount: winningShare,
-              message: `Win ${winningShare} on question ${questionId}`,
+              amount: winningEntry.bet * 1.5,
+              message: `Win ${
+                winningEntry.bet * 1.5
+              } on question ${questionId}`,
               status: "win",
+              paymentResult: {
+                id: "orderId",
+                status: "success",
+                razorpay_order_id: "razorpayOrderId",
+                razorpay_payment_id: "razorpayPaymentId",
+                razorpay_signature: "razorpaySignature",
+              },
             });
             await newTransaction.save();
           }
+          await User.findByIdAndUpdate(winningEntry.user._id, {
+            $inc: {amount: (winningEntry.bet * 1.5)},
+          });
         })
       );
 
@@ -394,7 +331,7 @@ const questionCtrl = {
     try {
       const user = req.user?._id;
       const questionId = req.params.id;
-      const {bet} = req.body;
+      const {bet, answer} = req.body;
 
       const question = await Question.findById(questionId);
       if (!question) {
@@ -412,7 +349,7 @@ const questionCtrl = {
         return;
       }
 
-      if (question.minBet > bet || question.maxBet < bet) {
+      if (question.minBet > Number(bet) || question.maxBet < Number(bet)) {
         res.status(400).json({message: "Invalid bet amount."});
         return;
       }
@@ -420,7 +357,8 @@ const questionCtrl = {
       const newEntry = new Entry({
         user: user,
         question: questionId,
-        bet: bet,
+        bet,
+        answer,
       });
       await newEntry.save();
 
@@ -429,48 +367,19 @@ const questionCtrl = {
         amount: bet,
         message: `Bet ${bet} on question ${questionId}`,
         status: "bet",
+        paymentResult: {
+          id: "orderId",
+          status: "success",
+          razorpay_order_id: "razorpayOrderId",
+          razorpay_payment_id: "razorpayPaymentId",
+          razorpay_signature: "razorpaySignature",
+        },
       });
       await newTransaction.save();
 
-      await User.findByIdAndUpdate(user, {$inc: {balance: -bet}});
+      await User.findByIdAndUpdate(user, {$inc: {amount: -bet}});
 
       res.status(200).json({message: "Entry added successfully."});
-      return;
-    } catch (error: any) {
-      res.status(500).json({message: error.message});
-      return;
-    }
-  },
-  getEntry: async (req: IReqAuth, res: Response) => {
-    try {
-      const features = new APIFeatures(
-        Entry.find({user: req.user?._id, _id: req.params.id}).populate(
-          "question",
-          "question category"
-        ),
-        req.query
-      )
-        .paginating()
-        .sorting()
-        .searching()
-        .filtering();
-      const features2 = new APIFeatures(
-        Entry.find({user: req.user?._id, _id: req.params.id}),
-        req.query
-      )
-        .searching()
-        .filtering();
-
-      const result = await Promise.allSettled([
-        features.query,
-        features2.query,
-      ]);
-
-      const entries = result[0].status === "fulfilled" ? result[0].value : [];
-      const count =
-        result[1].status === "fulfilled" ? result[1].value.length : 0;
-
-      res.status(200).json({entries, count});
       return;
     } catch (error: any) {
       res.status(500).json({message: error.message});

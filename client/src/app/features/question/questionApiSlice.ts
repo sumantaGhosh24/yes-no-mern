@@ -110,5 +110,5 @@ export const {
   useGetQuestionsQuery,
   useGetQuestionAdminQuery,
   useGetQuestionQuery,
-  // useDeclareResultMutation,
+  useDeclareResultMutation,
 } = questionApiSlice;

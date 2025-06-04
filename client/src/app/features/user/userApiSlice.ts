@@ -75,6 +75,6 @@ export const {
   useUserAddressMutation,
   useResetPasswordMutation,
   useGetAllUserQuery,
-  // useGetAdminDashboardQuery,
-  // useGetDashboardQuery,
+  useGetAdminDashboardQuery,
+  useGetDashboardQuery,
 } = userApiSlice;

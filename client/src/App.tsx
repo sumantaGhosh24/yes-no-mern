@@ -30,6 +30,9 @@ import {
   DetailsQuestion,
   Wallet,
   Transactions,
+  Entries,
+  MyEntries,
+  Dashboard,
 } from "./pages";
 
 const App = () => {
@@ -88,6 +91,18 @@ const App = () => {
               <Route
                 path="transactions"
                 element={<RequireAdmin elm={<Transactions />} />}
+              />
+              <Route
+                path="entries"
+                element={<RequireAdmin elm={<Entries />} />}
+              />
+              <Route
+                path="my-entries"
+                element={<RequireUser elm={<MyEntries />} />}
+              />
+              <Route
+                path="dashboard"
+                element={<RequireUser elm={<Dashboard />} />}
               />
             </Route>
           </Route>

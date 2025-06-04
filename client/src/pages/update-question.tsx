@@ -2,7 +2,7 @@ import {useParams} from "react-router-dom";
 
 import {useGetQuestionAdminQuery} from "../app/features/question/questionApiSlice";
 import {useTitle} from "../hooks";
-import {EditQuestionForm, Loading} from "../components";
+import {DeclareResult, EditQuestionForm, Loading} from "../components";
 
 const UpdateQuestion = () => {
   useTitle("Update and Delete Question");
@@ -17,7 +17,12 @@ const UpdateQuestion = () => {
     return <Loading />;
   }
 
-  return <EditQuestionForm question={question} />;
+  return (
+    <>
+      <EditQuestionForm question={question} />
+      {question?.result !== "completed" && <DeclareResult id={id} />}
+    </>
+  );
 };
 
 export default UpdateQuestion;

@@ -28,6 +28,12 @@ import WalletHeader from "./wallet-header";
 import Transactions from "./transactions";
 import ManageTransactions from "./manage-transactions";
 import AdminManageTransactions from "./admin-manage-transactions";
+import AddEntry from "./add-entry";
+import ManageEntries from "./manage-entries";
+import ManageMyEntries from "./manage-my-entries";
+import DeclareResult from "./declare-result";
+import UserDashboard from "./user-dashboard";
+import AdminDashboard from "./admin-dashboard";
 
 export {
   ThemeProvider,
@@ -60,4 +66,10 @@ export {
   Transactions,
   ManageTransactions,
   AdminManageTransactions,
+  AddEntry,
+  ManageEntries,
+  ManageMyEntries,
+  DeclareResult,
+  UserDashboard,
+  AdminDashboard,
 };

@@ -17,6 +17,9 @@ import UpdateQuestion from "./update-question";
 import DetailsQuestion from "./details-question";
 import Wallet from "./wallet";
 import Transactions from "./transactions";
+import Entries from "./entries";
+import MyEntries from "./my-entries";
+import Dashboard from "./dashboard";
 
 export {
   Public,
@@ -38,4 +41,7 @@ export {
   DetailsQuestion,
   Wallet,
   Transactions,
+  Entries,
+  MyEntries,
+  Dashboard,
 };

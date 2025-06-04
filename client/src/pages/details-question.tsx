@@ -3,7 +3,7 @@ import {formatDistanceToNowStrict} from "date-fns";
 
 import {useGetQuestionQuery} from "../app/features/question/questionApiSlice";
 import {useTitle} from "../hooks";
-import {Loading} from "../components";
+import {AddEntry, Loading} from "../components";
 
 const DetailsQuestion = () => {
   useTitle("Question Detailed");
@@ -94,6 +94,11 @@ const DetailsQuestion = () => {
           </h2>
         </div>
       </section>
+      <AddEntry
+        id={question?._id}
+        minBet={question?.minBet}
+        maxBet={question?.maxBet}
+      />
     </>
   );
 };
