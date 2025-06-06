@@ -1,8 +1,8 @@
 import {useState, useEffect} from "react";
-import {FaBars, FaTimes} from "react-icons/fa";
-import {useSelector} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
 import {toast} from "react-toastify";
+import {FaBars, FaChevronDown, FaTimes} from "react-icons/fa";
 
 import {useSendLogoutMutation} from "../app/features/auth/authApiSlice";
 import {selectCurrentToken} from "../app/features/auth/authSlice";
@@ -11,6 +11,7 @@ import {Loading, ModeToggle, PrimaryToggle} from "./";
 
 const AuthHeader = () => {
   const [navbar, setNavbar] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const navigate = useNavigate();
   const {primaryColor} = usePrimaryColor();
@@ -30,20 +31,55 @@ const AuthHeader = () => {
         <li className="text-white hover:text-gray-300 transition-all">
           <Link to="/profile">Profile</Link>
         </li>
-        <li className="text-white hover:text-gray-300 transition-all">
-          <Link to="/users">Users</Link>
-        </li>
-        <li className="text-white hover:text-gray-300 transition-all">
-          <Link to="/categories">Categories</Link>
-        </li>
-        <li className="text-white hover:text-gray-300 transition-all">
-          <Link to="/questions">Questions</Link>
-        </li>
-        <li className="text-white hover:text-gray-300 transition-all">
-          <Link to="/transactions">Transactions</Link>
-        </li>
-        <li className="text-white hover:text-gray-300 transition-all">
-          <Link to="/entries">Entries</Link>
+        <li className="relative text-white hover:text-gray-300 transition-all">
+          <button
+            onClick={() => setDropdownOpen(!dropdownOpen)}
+            className="flex items-center justify-between w-full py-2 pl-3 pr-4 md:p-0 md:w-auto focus:outline-none"
+          >
+            Admin
+            <FaChevronDown className="ml-2" />
+          </button>
+          {dropdownOpen && (
+            <div
+              className={`md:absolute md:top-full md:left-0 mt-2 md:mt-0 bg-${primaryColor}-700 hover:bg-${primaryColor}-800 rounded-md shadow-lg py-1 z-10 w-48`}
+            >
+              <Link
+                to="/users"
+                className="block px-4 py-2 text-white hover:bg-gray-700 transition-colors"
+                onClick={() => setDropdownOpen(false)}
+              >
+                Users
+              </Link>
+              <Link
+                to="/categories"
+                className="block px-4 py-2 text-white hover:bg-gray-700 transition-colors"
+                onClick={() => setDropdownOpen(false)}
+              >
+                Categories
+              </Link>
+              <Link
+                to="/questions"
+                className="block px-4 py-2 text-white hover:bg-gray-700 transition-colors"
+                onClick={() => setDropdownOpen(false)}
+              >
+                Questions
+              </Link>
+              <Link
+                to="/transactions"
+                className="block px-4 py-2 text-white hover:bg-gray-700 transition-colors"
+                onClick={() => setDropdownOpen(false)}
+              >
+                Transactions
+              </Link>
+              <Link
+                to="/entries"
+                className="block px-4 py-2 text-white hover:bg-gray-700 transition-colors"
+                onClick={() => setDropdownOpen(false)}
+              >
+                Entries
+              </Link>
+            </div>
+          )}
         </li>
         <li className="text-white hover:text-gray-300 transition-all">
           <Link to="/wallet">Wallet</Link>

@@ -75,7 +75,7 @@ const CreateQuestion = () => {
 
   return (
     <>
-      <section className="container p-6 mx-auto my-20 shadow-md rounded-md bg-white dark:bg-black shadow-black dark:shadow-white">
+      <section className="container p-6 mx-auto my-20 shadow-lg rounded-md bg-white dark:bg-black dark:shadow-white">
         <h2 className="text-3xl font-bold capitalize mb-10 text-black dark:text-white">
           Create Question
         </h2>

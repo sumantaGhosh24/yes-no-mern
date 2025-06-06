@@ -2,13 +2,13 @@ import {ChangeEvent, FormEvent, useState} from "react";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {toast} from "react-toastify";
 
-import {useTitle} from "../hooks";
 import {
   useConfirmForgotPasswordMutation,
   useValidateConfirmForgotPasswordMutation,
 } from "../app/features/auth/authApiSlice";
-import {PublicHeader} from "../components";
+import {useTitle} from "../hooks";
 import {usePrimaryColor} from "../components/primary-provider";
+import {PublicHeader} from "../components";
 
 const ConfirmForgotPassword = () => {
   useTitle("Confirm Forgot Password");
@@ -95,7 +95,7 @@ const ConfirmForgotPassword = () => {
       <PublicHeader />
       {!cookieToken && !token && (
         <div className="flex h-screen items-center justify-center">
-          <div className="container mx-auto text-center rounded-lg bg-white dark:bg-black p-8 shadow-lg shadow-black dark:shadow-white">
+          <div className="container mx-auto text-center rounded-lg bg-white dark:bg-black p-8 shadow-lg dark:shadow-white">
             <h1 className="mb-6 text-4xl font-bold">Visit you email address</h1>
             <div className="text-2xl">
               <p>
@@ -108,7 +108,7 @@ const ConfirmForgotPassword = () => {
       )}
       {!cookieToken && token && (
         <div className="flex h-screen items-center justify-center">
-          <div className="container mx-auto text-center rounded-lg bg-white dark:bg-black p-8 shadow-lg shadow-black dark:shadow-white">
+          <div className="container mx-auto text-center rounded-lg bg-white dark:bg-black p-8 shadow-lg dark:shadow-white">
             <h1 className="mb-6 text-4xl font-bold">
               Click the below link to forgot your password
             </h1>
@@ -130,7 +130,7 @@ const ConfirmForgotPassword = () => {
       )}
       {cookieToken && (
         <div className="flex h-screen items-center justify-center">
-          <div className="container mx-auto rounded-lg bg-white dark:bg-black p-8 shadow-lg shadow-black dark:shadow-white">
+          <div className="container mx-auto rounded-lg bg-white dark:bg-black p-8 shadow-lg dark:shadow-white">
             <h1 className="mb-6 text-4xl font-bold text-center">
               Add New Password
             </h1>

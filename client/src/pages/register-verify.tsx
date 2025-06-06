@@ -2,10 +2,10 @@ import {FormEvent} from "react";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {toast} from "react-toastify";
 
-import {useTitle} from "../hooks";
 import {useRegisterVerifyMutation} from "../app/features/auth/authApiSlice";
-import {PublicHeader} from "../components";
+import {useTitle} from "../hooks";
 import {usePrimaryColor} from "../components/primary-provider";
+import {PublicHeader} from "../components";
 
 const RegisterVerify = () => {
   useTitle("Register Verification");
@@ -44,7 +44,7 @@ const RegisterVerify = () => {
       <PublicHeader />
       {token ? (
         <div className="flex h-screen items-center justify-center">
-          <div className="container mx-auto text-center rounded-lg bg-white dark:bg-black p-8 shadow-lg shadow-black dark:shadow-white">
+          <div className="container mx-auto text-center rounded-lg bg-white dark:bg-black p-8 shadow-lg dark:shadow-white">
             <h1 className="mb-6 text-4xl font-bold">
               Click the below link to activate you account
             </h1>
@@ -65,7 +65,7 @@ const RegisterVerify = () => {
         </div>
       ) : (
         <div className="flex h-screen items-center justify-center">
-          <div className="container mx-auto text-center rounded-lg bg-white dark:bg-black p-8 shadow-lg shadow-black dark:shadow-white">
+          <div className="container mx-auto text-center rounded-lg bg-white dark:bg-black p-8 shadow-lg dark:shadow-white">
             <h1 className="mb-6 text-4xl font-bold">
               Visit your email address
             </h1>

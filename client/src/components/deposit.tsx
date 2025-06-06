@@ -64,7 +64,7 @@ const Deposit = () => {
 
   return (
     <section className="container mx-auto my-5">
-      <div className="bg-white dark:bg-black shadow-black dark:shadow-white rounded shadow-md p-8">
+      <div className="bg-white dark:bg-black dark:shadow-white rounded shadow-lg p-8">
         <div className="mb-5">
           <h2 className="dark:text-white text-3xl font-bold">Deposit Amount</h2>
         </div>

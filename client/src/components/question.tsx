@@ -32,7 +32,7 @@ const Question = ({
 
   if (question) {
     return (
-      <div className="bg-white dark:bg-black border rounded-md shadow-md shadow-black dark:shadow-white text-black dark:text-white">
+      <div className="bg-white dark:bg-black border rounded-md shadow-lg dark:shadow-white text-black dark:text-white">
         <div className="p-3">
           <Link to={`/details-question/${question.id}`}>
             <h5 className="mb-2 text-2xl font-bold tracking-tight capitalize">

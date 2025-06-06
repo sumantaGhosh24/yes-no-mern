@@ -2,10 +2,10 @@ import {FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
 
-import {useTitle} from "../hooks";
 import {useForgotPasswordMutation} from "../app/features/auth/authApiSlice";
-import {PublicHeader} from "../components";
+import {useTitle} from "../hooks";
 import {usePrimaryColor} from "../components/primary-provider";
+import {PublicHeader} from "../components";
 
 const ForgotPassword = () => {
   useTitle("Forgot Password");
@@ -44,7 +44,7 @@ const ForgotPassword = () => {
   return (
     <>
       <PublicHeader />
-      <section className="container p-6 mx-auto bg-white dark:bg-black rounded-md shadow-md shadow-black dark:shadow-white my-20">
+      <section className="container p-6 mx-auto bg-white dark:bg-black rounded-md shadow-lg dark:shadow-white my-20">
         <h1 className="text-xl font-bold text-black dark:text-white capitalize mb-5">
           Forgot Password
         </h1>

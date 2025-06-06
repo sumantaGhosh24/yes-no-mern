@@ -12,6 +12,7 @@ import {
 } from "../app/features/category/categoryApiSlice";
 import {usePrimaryColor} from "./primary-provider";
 import {selectCurrentToken} from "../app/features/auth/authSlice";
+import {BACKEND_URL} from "../config";
 
 interface EditCategoryFormProps {
   category: {
@@ -55,7 +56,7 @@ const EditCategoryForm = ({category}: EditCategoryFormProps) => {
     try {
       if (file !== "") {
         await axios.post(
-          "http://localhost:8080/api/v1/destroy",
+          `${BACKEND_URL}/destroy`,
           {
             public_id: category.image.public_id,
           },
@@ -68,16 +69,12 @@ const EditCategoryForm = ({category}: EditCategoryFormProps) => {
 
         let formData = new FormData();
         formData.append("file", file);
-        const response = await axios.post(
-          "http://localhost:8080/api/v1/upload",
-          formData,
-          {
-            headers: {
-              "content-type": "multipart/form-data",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axios.post(`${BACKEND_URL}/upload`, formData, {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        });
         let image = {
           public_id: response.data.public_id,
           url: response.data.url,
@@ -109,7 +106,7 @@ const EditCategoryForm = ({category}: EditCategoryFormProps) => {
     setLoading(true);
     try {
       await axios.post(
-        "http://localhost:8080/api/v1/destroy",
+        `${BACKEND_URL}/destroy`,
         {
           public_id: category.image.public_id,
         },
@@ -131,7 +128,7 @@ const EditCategoryForm = ({category}: EditCategoryFormProps) => {
 
   return (
     <>
-      <section className="container p-6 mx-auto my-10 shadow-md rounded-md bg-white dark:bg-black shadow-black dark:shadow-white text-black dark:text-white">
+      <section className="container p-6 mx-auto my-10 shadow-lg rounded-md bg-white dark:bg-black dark:shadow-white text-black dark:text-white">
         {isError && (
           <h2 className="text-xl font-bold capitalize text-red-500 mb-5">
             {error.message}
@@ -156,7 +153,7 @@ const EditCategoryForm = ({category}: EditCategoryFormProps) => {
           <FaTrash className="btn-icons" /> Delete Category
         </button>
       </section>
-      <section className="container p-6 mx-auto my-10 shadow-md rounded-md bg-white dark:bg-black shadow-black dark:shadow-white text-black dark:text-white">
+      <section className="container p-6 mx-auto my-10 shadow-lg rounded-md bg-white dark:bg-black dark:shadow-white text-black dark:text-white">
         <h2 className="text-xl font-bold capitalize mb-5">Update Category</h2>
         <form onSubmit={handleUpdate}>
           <div className="mt-4 flex flex-col gap-4">

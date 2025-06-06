@@ -24,9 +24,6 @@ const ManageMyEntries = ({entryId, page, sort}: ManageMyEntriesProps) => {
       <tr className="hover:bg-gray-50">
         <td className="px-6 py-4 whitespace-nowrap">{entry.id}</td>
         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-          {entry.user.email}
-        </td>
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
           {entry.question.question}
         </td>
         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -43,6 +40,8 @@ const ManageMyEntries = ({entryId, page, sort}: ManageMyEntriesProps) => {
             className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
               entry.result === "success"
                 ? "bg-green-100 text-green-800"
+                : entry.result === "failed"
+                ? "bg-red-100 text-red-800"
                 : "bg-yellow-100 text-yellow-800"
             }`}
           >

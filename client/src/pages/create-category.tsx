@@ -9,6 +9,7 @@ import {selectCurrentToken} from "../app/features/auth/authSlice";
 import {useCreateCategoryMutation} from "../app/features/category/categoryApiSlice";
 import {usePrimaryColor} from "../components/primary-provider";
 import {useTitle} from "../hooks";
+import {BACKEND_URL} from "../config";
 
 const CreateCategory = () => {
   useTitle("Create Category");
@@ -45,16 +46,12 @@ const CreateCategory = () => {
 
       let formData = new FormData();
       formData.append("file", file);
-      const response = await axios.post(
-        "http://localhost:8080/api/v1/upload",
-        formData,
-        {
-          headers: {
-            "content-type": "multipart/form-data",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.post(`${BACKEND_URL}/upload`, formData, {
+        headers: {
+          "content-type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       let image = {public_id: response.data.public_id, url: response.data.url};
 
       const obj = {name, image};
@@ -69,7 +66,7 @@ const CreateCategory = () => {
   };
 
   return (
-    <section className="container p-6 mx-auto my-20 shadow-md rounded-md bg-white dark:bg-black shadow-black dark:shadow-white">
+    <section className="container p-6 mx-auto my-20 shadow-lg rounded-md bg-white dark:bg-black dark:shadow-white">
       <h2 className="text-3xl font-bold capitalize mb-10 text-black dark:text-white">
         Create Category
       </h2>

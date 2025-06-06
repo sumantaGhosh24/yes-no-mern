@@ -2,10 +2,10 @@ import {ChangeEvent, FormEvent, useState} from "react";
 import {useNavigate, Link} from "react-router-dom";
 import {toast} from "react-toastify";
 
-import {useTitle} from "../hooks";
 import {useLoginMutation} from "../app/features/auth/authApiSlice";
-import {PublicHeader} from "../components";
 import {usePrimaryColor} from "../components/primary-provider";
+import {useTitle} from "../hooks";
+import {PublicHeader} from "../components";
 
 const Login = () => {
   useTitle("Login");
@@ -49,7 +49,7 @@ const Login = () => {
   return (
     <>
       <PublicHeader />
-      <section className="container p-6 mx-auto bg-white dark:bg-black rounded-md shadow-md shadow-black dark:shadow-white my-20">
+      <section className="container p-6 mx-auto bg-white dark:bg-black rounded-md shadow-lg dark:shadow-white my-20">
         <h2 className="text-xl font-bold text-black dark:text-white capitalize mb-5">
           Login User
         </h2>

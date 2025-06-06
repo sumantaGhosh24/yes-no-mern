@@ -11,7 +11,7 @@ const WalletHeader = () => {
   const {user} = useSelector(selectCurrentToken);
 
   return (
-    <header className="container mx-auto flex justify-between items-center bg-white dark:bg-black rounded shadow-md p-8 my-5 shadow-black dark:shadow-white">
+    <header className="container mx-auto flex justify-between items-center bg-white dark:bg-black rounded shadow-lg p-8 my-5 dark:shadow-white">
       <div className="flex items-center space-x-2">
         <FaWallet className={`text-${primaryColor}-500`} size={24} />
         <h1 className="text-2xl font-bold">My Wallet</h1>

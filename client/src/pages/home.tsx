@@ -71,7 +71,7 @@ const Home = () => {
       ));
 
     content = (
-      <div className="container mx-auto shadow-xl rounded-xl my-10 p-5 text-black dark:text-white">
+      <div className="container mx-auto shadow-lg rounded-lg my-10 p-5 text-black dark:text-white">
         <h1 className="mb-5 text-2xl font-bold">All Questions</h1>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {tableContent}
@@ -82,7 +82,7 @@ const Home = () => {
 
   return (
     <>
-      <section className="container p-6 mx-auto my-5 shadow-md rounded-md bg-white dark:bg-black text-black dark:text-white">
+      <section className="container p-6 mx-auto my-5 shadow-lg rounded-md bg-white dark:bg-black text-black dark:text-white">
         <h2 className="text-xl font-bold capitalize mb-3">Search Question</h2>
         <div className="flex flex-wrap gap-3">
           <div className="flex items-center border-3 p-2 rounded w-full">

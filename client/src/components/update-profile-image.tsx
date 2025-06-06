@@ -8,6 +8,7 @@ import {selectCurrentToken} from "../app/features/auth/authSlice";
 import {useRefreshMutation} from "../app/features/auth/authApiSlice";
 import {useUserImageMutation} from "../app/features/user/userApiSlice";
 import {usePrimaryColor} from "./primary-provider";
+import {BACKEND_URL} from "../config";
 
 const UpdateProfileImage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -28,7 +29,7 @@ const UpdateProfileImage = () => {
     try {
       if (user.image.url) {
         await axios.post(
-          "http://localhost:8080/api/v1/destroy",
+          `${BACKEND_URL}/destroy`,
           {
             public_id: user.image.public_id,
           },
@@ -42,16 +43,12 @@ const UpdateProfileImage = () => {
 
       let formData = new FormData();
       formData.append("file", file);
-      const response = await axios.post(
-        "http://localhost:8080/api/v1/upload",
-        formData,
-        {
-          headers: {
-            "content-type": "multipart/form-data",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.post(`${BACKEND_URL}/upload`, formData, {
+        headers: {
+          "content-type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       let image = {public_id: response.data.public_id, url: response.data.url};
 
       const {message} = await updateUserImage({image}).unwrap();
@@ -74,7 +71,7 @@ const UpdateProfileImage = () => {
   };
 
   return (
-    <section className="container p-6 mx-auto bg-white dark:bg-black rounded-md shadow-md shadow-black dark:shadow-white my-5">
+    <section className="container p-6 mx-auto bg-white dark:bg-black rounded-md shadow-lg dark:shadow-white my-5">
       <h1 className="text-xl font-bold text-black dark:text-white capitalize mb-5">
         Update Profile Image
       </h1>

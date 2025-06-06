@@ -114,7 +114,7 @@ const UserDashboard = () => {
   };
 
   return (
-    <section className="container p-6 mx-auto my-5 shadow-md rounded-md bg-white dark:bg-black text-black dark:text-white">
+    <section className="container p-6 mx-auto my-5 shadow-lg rounded-md bg-white dark:bg-black text-black dark:text-white dark:shadow-white">
       <h2 className="text-xl font-bold capitalize mb-3">User Dashboard</h2>
       <div className="my-5 flex items-center gap-3 flex-wrap">
         <div className="border p-4 rounded-md h-[400px]">

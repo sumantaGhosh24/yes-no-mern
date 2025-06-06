@@ -9,7 +9,7 @@ const ProfileDetails = () => {
   const {user} = useSelector(selectCurrentToken);
 
   return (
-    <div className="container flex items-center flex-wrap mx-auto shadow-md p-5 rounded-md my-5 bg-white dark:bg-black shadow-black dark:shadow-white">
+    <div className="container flex items-center flex-wrap mx-auto shadow-lg p-5 rounded-md my-5 bg-white dark:bg-black dark:shadow-white">
       <h1 className="text-3xl font-bold text-capitalize text-black dark:text-white">
         Profile Details
       </h1>

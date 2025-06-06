@@ -20,7 +20,7 @@ const DetailsQuestion = () => {
 
   return (
     <>
-      <section className="container p-6 mx-auto my-20 shadow-md rounded-md bg-white dark:bg-black shadow-black dark:shadow-white text-black dark:text-white">
+      <section className="container p-6 mx-auto my-5 shadow-lg rounded-md bg-white dark:bg-black dark:shadow-white text-black dark:text-white">
         <h2 className="text-3xl font-bold capitalize mb-10">
           Detailed Question
         </h2>

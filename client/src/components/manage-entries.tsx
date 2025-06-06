@@ -31,15 +31,13 @@ const ManageEntries = ({
     return (
       <tr className="hover:bg-gray-50">
         <td className="px-6 py-4 whitespace-nowrap">{entry.id}</td>
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
           {entry.user.email}({entry.user._id})
         </td>
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
           {entry.question.question}({entry.question._id})
         </td>
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-          {entry.answer}
-        </td>
+        <td className="px-6 py-4 whitespace-nowrap text-sm">{entry.answer}</td>
         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
           {formatterINR.format(entry.bet)}
         </td>
@@ -51,6 +49,8 @@ const ManageEntries = ({
             className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
               entry.result === "success"
                 ? "bg-green-100 text-green-800"
+                : entry.result === "failed"
+                ? "bg-red-100 text-red-800"
                 : "bg-yellow-100 text-yellow-800"
             }`}
           >

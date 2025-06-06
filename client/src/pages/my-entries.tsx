@@ -50,15 +50,9 @@ const MyEntries = () => {
             <tr>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg"
-              >
-                Id
-              </th>
-              <th
-                scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                User
+                Id
               </th>
               <th
                 scope="col"
@@ -80,7 +74,7 @@ const MyEntries = () => {
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 Win
               </th>
@@ -114,11 +108,11 @@ const MyEntries = () => {
 
   return (
     <>
-      <section className="container p-6 mx-auto my-5 shadow-md rounded-md bg-white dark:bg-black shadow-black dark:shadow-white text-black dark:text-white">
+      <section className="container p-6 mx-auto my-5 shadow-lg rounded-md bg-white dark:bg-black dark:shadow-white text-black dark:text-white">
         <div className="flex items-center justify-between">
           <h2 className="text-3xl font-bold capitalize">Manage My Entries</h2>
         </div>
-        <section className="p-6 mx-auto my-5 shadow-md rounded-md bg-white dark:bg-black text-black dark:text-white">
+        <section className="p-6 mx-auto my-5 shadow-lg rounded-md bg-white dark:bg-black text-black dark:text-white">
           <h2 className="text-xl font-bold capitalize mb-3">Filter Entries</h2>
           <div className="flex flex-wrap gap-3">
             <div className="flex items-center border-3 p-2 rounded w-full">

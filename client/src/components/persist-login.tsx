@@ -17,7 +17,6 @@ const PersistLogin = (): JSX.Element => {
     useRefreshMutation();
 
   useEffect(() => {
-    // if (effectRan.current === true || process.env.NODE_ENV !== "development") {
     if (effectRan.current === true) {
       const verifyRefreshToken = async () => {
         try {

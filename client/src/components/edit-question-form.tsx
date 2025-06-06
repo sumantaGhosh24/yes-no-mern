@@ -106,7 +106,7 @@ const EditQuestionForm = ({question}: EditQuestionFormProps) => {
 
   return (
     <>
-      <section className="container p-6 mx-auto my-10 shadow-md rounded-md bg-white dark:bg-black shadow-black dark:shadow-white text-black dark:text-white">
+      <section className="container p-6 mx-auto my-10 shadow-lg rounded-md bg-white dark:bg-black dark:shadow-white text-black dark:text-white">
         <h2 className="text-xl font-bold capitalize mb-5 ">Update Question</h2>
         {isError && (
           <h2 className="text-xl font-bold capitalize text-red-500 mb-5">

@@ -30,31 +30,47 @@ const ManageQuestions = ({
 
   if (question) {
     return (
-      <tr className="bg-gray-200 dark:bg-neutral-400 border-b text-base font-bold">
-        <td className="px-6 py-4">{question.id}</td>
-        <td className="py-3 px-6 text-left capitalize">{question.question}</td>
-        <td className="py-3 px-6 text-left capitalize">{question.minBet}</td>
-        <td className="py-3 px-6 text-left capitalize">{question.maxBet}</td>
-        <td className="py-3 px-6 text-left capitalize">
+      <tr className="hover:bg-gray-50">
+        <td className="px-6 py-4 whitespace-nowrap">{question.id}</td>
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
+          {question.question}
+        </td>
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
+          {question.minBet}
+        </td>
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
+          {question.maxBet}
+        </td>
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
           {new Date(question.starting).toLocaleDateString()}
         </td>
-        <td className="py-3 px-6 text-left capitalize">
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
           {new Date(question.ending).toLocaleDateString()}
         </td>
-        <td className="py-3 px-6 text-left capitalize">
-          {question.result ?? "N/A"}
+        <td className="px-6 py-4 whitespace-nowrap">
+          <span
+            className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+              question.result === "completed"
+                ? "bg-green-100 text-green-800"
+                : "bg-yellow-100 text-yellow-800"
+            }`}
+          >
+            {question.result}
+          </span>
         </td>
-        <td className="py-3 px-6 text-left capitalize">
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
           {question.answer ?? "N/A"}
         </td>
-        <td className="py-3 px-6 text-left">{question.owner.email}</td>
-        <td className="py-3 px-6 text-left capitalize">
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
+          {question.owner.email}
+        </td>
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
           {question.category.name}
         </td>
-        <td className="py-3 px-6 text-left truncate">
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
           {formatDistanceToNowStrict(question.createdAt)} ago
         </td>
-        <td className="py-3 px-6 text-left truncate">
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
           {formatDistanceToNowStrict(question.updatedAt)} ago
         </td>
         <td className="px-6 py-4">

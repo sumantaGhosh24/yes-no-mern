@@ -50,7 +50,7 @@ const UpdateProfileAddress = () => {
   };
 
   return (
-    <section className="container p-6 mx-auto bg-white dark:bg-black rounded-md shadow-md shadow-black dark:shadow-white my-5">
+    <section className="container p-6 mx-auto bg-white dark:bg-black rounded-md shadow-lg dark:shadow-white my-5">
       <h1 className="text-xl font-bold text-black dark:text-white capitalize mb-5">
         Update User Address
       </h1>
