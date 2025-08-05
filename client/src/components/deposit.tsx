@@ -7,7 +7,6 @@ import {
 } from "../app/features/wallet/walletApiSlice";
 import {useRefreshMutation} from "../app/features/auth/authApiSlice";
 import {usePrimaryColor} from "./primary-provider";
-import {RAZORPAY_KEY} from "../config";
 
 const Deposit = () => {
   const [price, setPrice] = useState("");
@@ -32,7 +31,7 @@ const Deposit = () => {
     const {amount, id: order_id, currency} = result;
 
     const options = {
-      key: RAZORPAY_KEY,
+      key: import.meta.env.VITE_RAZORPAY_KEY,
       amount: Number(amount),
       currency: currency,
       order_id: order_id,
