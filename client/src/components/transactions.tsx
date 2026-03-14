@@ -53,23 +53,23 @@ const Transactions = () => {
     content = (
       <div className="relative overflow-x-auto mt-10">
         <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+          <thead className="bg-gray-50 dark:bg-gray-700">
             <tr>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider"
               >
                 Id
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider"
               >
                 User
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider"
               >
                 Amount
               </th>
@@ -81,31 +81,31 @@ const Transactions = () => {
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider"
               >
                 Status
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider"
               >
                 Payment Result
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider"
               >
                 Created At
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider"
               >
                 Updated At
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200 dark:text-black">
+          <tbody className="bg-white dark:bg-black divide-y divide-gray-200 text-black dark:text-white">
             {tableContent}
           </tbody>
         </table>
@@ -115,11 +115,11 @@ const Transactions = () => {
 
   return (
     <>
-      <section className="container p-6 mx-auto my-5 shadow-lg rounded-md bg-white dark:bg-black dark:shadow-white text-black dark:text-white">
+      <section className="container p-6 mx-auto my-5 shadow-md rounded-md bg-white dark:bg-black dark:shadow-gray-400 text-black dark:text-white">
         <div className="flex items-center justify-between">
           <h2 className="text-3xl font-bold capitalize">Manage Transactions</h2>
         </div>
-        <section className="p-6 mx-auto my-5 shadow-lg rounded-md bg-white dark:bg-black text-black dark:text-white">
+        <section className="p-6 mx-auto my-5 shadow-md rounded-md bg-white dark:bg-black text-black dark:text-white dark:shadow-gray-400">
           <h2 className="text-xl font-bold capitalize mb-3">
             Search Transaction
           </h2>

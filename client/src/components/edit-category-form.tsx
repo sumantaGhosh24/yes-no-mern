@@ -128,7 +128,7 @@ const EditCategoryForm = ({category}: EditCategoryFormProps) => {
 
   return (
     <>
-      <section className="container p-6 mx-auto my-10 shadow-lg rounded-md bg-white dark:bg-black dark:shadow-white text-black dark:text-white">
+      <section className="container p-6 mx-auto my-10 shadow-md rounded-md dark:shadow-gray-400">
         {isError && (
           <h2 className="text-xl font-bold capitalize text-red-500 mb-5">
             {error.message}
@@ -153,7 +153,7 @@ const EditCategoryForm = ({category}: EditCategoryFormProps) => {
           <FaTrash className="btn-icons" /> Delete Category
         </button>
       </section>
-      <section className="container p-6 mx-auto my-10 shadow-lg rounded-md bg-white dark:bg-black dark:shadow-white text-black dark:text-white">
+      <section className="container p-6 mx-auto my-10 shadow-md rounded-md dark:shadow-gray-400">
         <h2 className="text-xl font-bold capitalize mb-5">Update Category</h2>
         <form onSubmit={handleUpdate}>
           <div className="mt-4 flex flex-col gap-4">
@@ -188,7 +188,7 @@ const EditCategoryForm = ({category}: EditCategoryFormProps) => {
                 id="name"
                 name="name"
                 type="text"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
                 onChange={(e) => setName(e.target.value)}
                 value={name}
                 required

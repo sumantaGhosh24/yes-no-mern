@@ -29,7 +29,7 @@ const ManageEntries = ({
 
   if (entry) {
     return (
-      <tr className="hover:bg-gray-50">
+      <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
         <td className="px-6 py-4 whitespace-nowrap">{entry.id}</td>
         <td className="px-6 py-4 whitespace-nowrap text-sm">
           {entry.user.email}({entry.user._id})
@@ -46,7 +46,7 @@ const ManageEntries = ({
         </td>
         <td className="px-6 py-4 whitespace-nowrap">
           <span
-            className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+            className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full uppercase ${
               entry.result === "success"
                 ? "bg-green-100 text-green-800"
                 : entry.result === "failed"

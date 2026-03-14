@@ -71,8 +71,8 @@ const UpdateProfileImage = () => {
   };
 
   return (
-    <section className="container p-6 mx-auto bg-white dark:bg-black rounded-md shadow-lg dark:shadow-white my-5">
-      <h1 className="text-xl font-bold text-black dark:text-white capitalize mb-5">
+    <section className="container p-6 mx-auto rounded-md shadow-md dark:shadow-gray-400 my-5">
+      <h1 className="text-xl font-bold capitalize mb-5">
         Update Profile Image
       </h1>
       <form onSubmit={handleUpdateImage}>

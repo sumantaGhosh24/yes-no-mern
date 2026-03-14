@@ -44,9 +44,9 @@ const AdminManageTransactions = ({
 
   if (transaction) {
     return (
-      <tr className="hover:bg-gray-50">
+      <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 dark:bg-black text-black dark:text-white">
         <td className="px-6 py-4 whitespace-nowrap">{transaction.id}</td>
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
           {transaction.user}
         </td>
         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
@@ -54,25 +54,25 @@ const AdminManageTransactions = ({
             {formatterINR.format(transaction.amount)}
           </span>
         </td>
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
           {transaction.message}
         </td>
         <td className="px-6 py-4 whitespace-nowrap">
           <span
-            className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+            className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full uppercase ${
               statusStyle[transaction.status] as any
             }`}
           >
             {transaction.status}
           </span>
         </td>
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
           {transaction.paymentResult.id ?? "N/A"}
         </td>
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
           {formatDistanceToNowStrict(transaction.createdAt)} ago
         </td>
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td className="px-6 py-4 whitespace-nowrap text-sm">
           {formatDistanceToNowStrict(transaction.updatedAt)} ago
         </td>
       </tr>

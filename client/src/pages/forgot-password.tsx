@@ -44,7 +44,7 @@ const ForgotPassword = () => {
   return (
     <>
       <PublicHeader />
-      <section className="container p-6 mx-auto bg-white dark:bg-black rounded-md shadow-lg dark:shadow-white my-20">
+      <section className="container p-6 mx-auto rounded-md shadow-md dark:shadow-gray-400 my-10">
         <h1 className="text-xl font-bold text-black dark:text-white capitalize mb-5">
           Forgot Password
         </h1>

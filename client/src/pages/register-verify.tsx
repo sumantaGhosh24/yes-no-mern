@@ -44,7 +44,7 @@ const RegisterVerify = () => {
       <PublicHeader />
       {token ? (
         <div className="flex h-screen items-center justify-center">
-          <div className="container mx-auto text-center rounded-lg bg-white dark:bg-black p-8 shadow-lg dark:shadow-white">
+          <div className="container mx-auto text-center rounded-md p-8 shadow-md dark:shadow-gray-400">
             <h1 className="mb-6 text-4xl font-bold">
               Click the below link to activate you account
             </h1>
@@ -65,7 +65,7 @@ const RegisterVerify = () => {
         </div>
       ) : (
         <div className="flex h-screen items-center justify-center">
-          <div className="container mx-auto text-center rounded-lg bg-white dark:bg-black p-8 shadow-lg dark:shadow-white">
+          <div className="container mx-auto text-center rounded-md p-8 shadow-md dark:shadow-gray-400">
             <h1 className="mb-6 text-4xl font-bold">
               Visit your email address
             </h1>

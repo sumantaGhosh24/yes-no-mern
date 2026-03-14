@@ -20,78 +20,85 @@ const DetailsQuestion = () => {
 
   return (
     <>
-      <section className="container p-6 mx-auto my-5 shadow-lg rounded-md bg-white dark:bg-black dark:shadow-white text-black dark:text-white">
-        <h2 className="text-3xl font-bold capitalize mb-10">
-          Detailed Question
-        </h2>
-        <div className="flex flex-col gap-4">
-          <h2>
-            Id: <span className="font-bold">{question?._id}</span>
-          </h2>
-          <h2>
-            Title:{" "}
-            <span className="font-bold capitalize">{question?.question}</span>
-          </h2>
-          <h2>
-            Minimum Bet: <span className="font-bold">{question?.minBet}</span>
-          </h2>
-          <h2>
-            Maximum Bet: <span className="font-bold">{question?.maxBet}</span>
-          </h2>
-          <h2>
-            Starting:{" "}
-            <span className="font-bold">
+      <section className="container p-6 mx-auto my-5 shadow-md rounded-md dark:shadow-gray-400">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+          <div>
+            <h2 className="text-3xl font-bold capitalize">
+              {question?.question}
+            </h2>
+            <p className="text-sm text-gray-500 mt-1">
+              Question ID: {question?._id}
+            </p>
+          </div>
+          <span className="px-4 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold uppercase">
+            {question?.result}
+          </span>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <div className="p-4 rounded-xl bg-gray-100 dark:bg-gray-800">
+            <p className="text-sm text-gray-500">Minimum Bet</p>
+            <p className="text-xl font-bold">{question?.minBet}</p>
+          </div>
+          <div className="p-4 rounded-xl bg-gray-100 dark:bg-gray-800">
+            <p className="text-sm text-gray-500">Maximum Bet</p>
+            <p className="text-xl font-bold">{question?.maxBet}</p>
+          </div>
+          <div className="p-4 rounded-xl bg-gray-100 dark:bg-gray-800">
+            <p className="text-sm text-gray-500">Result</p>
+            <p className="text-xl font-bold">{question?.result ?? "Pending"}</p>
+          </div>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <div>
+            <p className="text-sm text-gray-500">Starting Date</p>
+            <p className="font-semibold">
               {new Date(question.starting).toLocaleDateString()}
-            </span>
-          </h2>
-          <h2>
-            Ending:{" "}
-            <span className="font-bold">
+            </p>
+          </div>
+          <div>
+            <p className="text-sm text-gray-500">Ending Date</p>
+            <p className="font-semibold">
               {new Date(question.ending).toLocaleDateString()}
-            </span>
-          </h2>
-          <h2>
-            Result:{" "}
-            <span className="font-bold">{question?.result ?? "N/A"}</span>
-          </h2>
-          <h2>
-            Answer:{" "}
-            <span className="font-bold">{question?.answer ?? "N/A"}</span>
-          </h2>
-          <div>
-            <h2>Category: </h2>
-            <div className="flex items-center gap-3 mt-3">
-              <img
-                src={question?.category?.image?.url}
-                alt="category"
-                className="h-12 w-12 rounded-full"
-              />
-              <span className="font-bold">{question?.category?.name}</span>
+            </p>
+          </div>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <div className="flex items-center gap-4 p-4 rounded-xl bg-gray-100 dark:bg-gray-800">
+            <img
+              src={question?.category?.image?.url}
+              alt="category"
+              className="h-12 w-12 rounded-full object-cover"
+            />
+            <div>
+              <p className="text-sm text-gray-500">Category</p>
+              <p className="font-semibold">{question?.category?.name}</p>
             </div>
           </div>
-          <div>
-            <h2>Owner: </h2>
-            <div className="flex items-center gap-3 mt-3">
-              <img
-                src={question?.owner?.image?.url}
-                alt="category"
-                className="h-12 w-12 rounded-full"
-              />
-              <span className="font-bold">{question?.owner?.email}</span>
+          <div className="flex items-center gap-4 p-4 rounded-xl bg-gray-100 dark:bg-gray-800">
+            <img
+              src={question?.owner?.image?.url}
+              alt="owner"
+              className="h-12 w-12 rounded-full object-cover"
+            />
+            <div>
+              <p className="text-sm text-gray-500">Owner</p>
+              <p className="font-semibold">{question?.owner?.email}</p>
             </div>
           </div>
-          <h2>
-            Created At:{" "}
-            <span className="font-bold">
-              {formatDistanceToNowStrict(question?.createdAt)}
-            </span>
-          </h2>
-          <h2>
-            Updated At:{" "}
-            <span className="font-bold">
-              {formatDistanceToNowStrict(question?.updatedAt)}
-            </span>
-          </h2>
+        </div>
+        <div className="mb-6">
+          <p className="text-sm text-gray-500">Correct Answer</p>
+          <p className="font-semibold">
+            {question?.answer ?? "Not announced yet"}
+          </p>
+        </div>
+        <div className="border-t pt-4 text-sm text-gray-500 flex justify-between">
+          <span>
+            Created {formatDistanceToNowStrict(question?.createdAt)} ago
+          </span>
+          <span>
+            Updated {formatDistanceToNowStrict(question?.updatedAt)} ago
+          </span>
         </div>
       </section>
       <AddEntry

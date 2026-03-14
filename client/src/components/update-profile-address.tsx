@@ -50,82 +50,70 @@ const UpdateProfileAddress = () => {
   };
 
   return (
-    <section className="container p-6 mx-auto bg-white dark:bg-black rounded-md shadow-lg dark:shadow-white my-5">
-      <h1 className="text-xl font-bold text-black dark:text-white capitalize mb-5">
-        Update User Address
-      </h1>
+    <section className="container p-6 mx-auto rounded-md shadow-md dark:shadow-gray-400 my-5">
+      <h1 className="text-xl font-bold capitalize mb-5">Update User Address</h1>
       <form onSubmit={handleUpdateAddress}>
         <div className="mt-4 flex flex-col gap-4">
           <div>
-            <label className="text-black dark:text-white" htmlFor="city">
-              City
-            </label>
+            <label htmlFor="city">City</label>
             <input
               id="city"
               name="city"
               type="text"
               placeholder="Enter city"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
+              className="block w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
               onChange={handleChangeAddress}
               value={address.city}
               required
             />
           </div>
           <div>
-            <label className="text-black dark:text-white" htmlFor="state">
-              State
-            </label>
+            <label htmlFor="state">State</label>
             <input
               id="state"
               name="state"
               type="text"
               placeholder="Enter state"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
+              className="block w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
               onChange={handleChangeAddress}
               value={address.state}
               required
             />
           </div>
           <div>
-            <label className="text-black dark:text-white" htmlFor="country">
-              Country
-            </label>
+            <label htmlFor="country">Country</label>
             <input
               id="country"
               name="country"
               type="text"
               placeholder="Enter country"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
+              className="block w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
               onChange={handleChangeAddress}
               value={address.country}
               required
             />
           </div>
           <div>
-            <label className="text-black dark:text-white" htmlFor="zip">
-              Zip
-            </label>
+            <label htmlFor="zip">Zip</label>
             <input
               id="zip"
               name="zip"
               type="text"
               placeholder="Enter zip"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
+              className="block w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
               onChange={handleChangeAddress}
               value={address.zip}
               required
             />
           </div>
           <div>
-            <label className="text-black dark:text-white" htmlFor="addressline">
-              Addressline
-            </label>
+            <label htmlFor="addressline">Addressline</label>
             <input
               id="addressline"
               name="addressline"
               type="text"
               placeholder="Enter addressline"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
+              className="block w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
               onChange={handleChangeAddress}
               value={address.addressline}
               required

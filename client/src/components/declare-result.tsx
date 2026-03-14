@@ -42,9 +42,9 @@ const DeclareResult = ({id}: DeclareResultProps) => {
 
   return (
     <section className="container mx-auto my-5">
-      <div className="bg-white dark:bg-black dark:shadow-white rounded shadow-lg p-8">
+      <div className="dark:shadow-gray-400 rounded shadow-md p-8">
         <div className="mb-5">
-          <h2 className="dark:text-white text-3xl font-bold">Declare Result</h2>
+          <h2 className="text-3xl font-bold">Declare Result</h2>
         </div>
         <form className="mb-6" onSubmit={handleDeclareResult}>
           <select

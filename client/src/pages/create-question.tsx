@@ -75,12 +75,10 @@ const CreateQuestion = () => {
 
   return (
     <>
-      <section className="container p-6 mx-auto my-20 shadow-lg rounded-md bg-white dark:bg-black dark:shadow-white">
-        <h2 className="text-3xl font-bold capitalize mb-10 text-black dark:text-white">
-          Create Question
-        </h2>
+      <section className="container p-6 mx-auto my-10 shadow-md rounded-md dark:shadow-gray-400">
+        <h2 className="text-3xl font-bold capitalize mb-10">Create Question</h2>
         {isError && (
-          <h3 className="text-xl font-bold capitalize mb-10 text-black dark:text-white">
+          <h3 className="text-xl font-bold capitalize mb-10">
             {error.message}
           </h3>
         )}

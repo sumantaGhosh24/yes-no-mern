@@ -9,12 +9,10 @@ const ProfileDetails = () => {
   const {user} = useSelector(selectCurrentToken);
 
   return (
-    <div className="container flex items-center flex-wrap mx-auto shadow-lg p-5 rounded-md my-5 bg-white dark:bg-black dark:shadow-white">
-      <h1 className="text-3xl font-bold text-capitalize text-black dark:text-white">
-        Profile Details
-      </h1>
+    <div className="container flex items-center flex-wrap mx-auto shadow-md p-5 rounded-md my-5 dark:shadow-gray-400">
+      <h1 className="text-3xl font-bold text-capitalize">Profile Details</h1>
       <div className="w-full">
-        <div className="text-left lg:text-left text-black dark:text-white">
+        <div className="text-left lg:text-left">
           {user.image.url && (
             <img
               src={user.image?.url}

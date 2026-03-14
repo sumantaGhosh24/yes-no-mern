@@ -40,58 +40,44 @@ const ResetPassword = () => {
   };
 
   return (
-    <section className="container p-6 mx-auto bg-white dark:bg-black rounded-md shadow-lg dark:shadow-white my-5">
-      <h1 className="text-xl font-bold text-black dark:text-white capitalize mb-5">
-        Reset Password
-      </h1>
+    <section className="container p-6 mx-auto rounded-md shadow-md dark:shadow-gray-400 my-5">
+      <h1 className="text-xl font-bold capitalize mb-5">Reset Password</h1>
       <form onSubmit={handleResetPassword}>
         <div className="mt-4 flex flex-col gap-4">
           <div>
-            <label
-              className="text-black dark:text-white"
-              htmlFor="previousPassword"
-            >
-              Previous Password
-            </label>
+            <label htmlFor="previousPassword">Previous Password</label>
             <input
               id="previousPassword"
               name="previousPassword"
               type="password"
               placeholder="Enter previous password"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
+              className="block w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
               onChange={(e) => setPreviousPassword(e.target.value)}
               value={previousPassword}
               required
             />
           </div>
           <div>
-            <label className="text-black dark:text-white" htmlFor="newPassword">
-              New Password
-            </label>
+            <label htmlFor="newPassword">New Password</label>
             <input
               id="newPassword"
               name="newPassword"
               type="password"
               placeholder="Enter new password"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
+              className="block w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
               onChange={(e) => setNewPassword(e.target.value)}
               value={newPassword}
               required
             />
           </div>
           <div>
-            <label
-              className="text-black dark:text-white"
-              htmlFor="cf_newPassword"
-            >
-              Confirm New Password
-            </label>
+            <label htmlFor="cf_newPassword">Confirm New Password</label>
             <input
               id="cf_newPassword"
               name="cf_newPassword"
               type="password"
               placeholder="Enter confirm new password"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
+              className="block w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
               onChange={(e) => setCf_newPassword(e.target.value)}
               value={cf_newPassword}
               required

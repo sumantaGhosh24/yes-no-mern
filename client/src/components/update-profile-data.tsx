@@ -50,79 +50,67 @@ const UpdateProfileData = () => {
   };
 
   return (
-    <section className="container p-6 mx-auto bg-white dark:bg-black rounded-md shadow-lg dark:shadow-white my-5">
-      <h1 className="text-xl font-bold text-black dark:text-white capitalize mb-5">
-        Update User Data
-      </h1>
+    <section className="container p-6 mx-auto rounded-md shadow-md dark:shadow-gray-400 my-5">
+      <h1 className="text-xl font-bold capitalize mb-5">Update User Data</h1>
       <form onSubmit={handleUpdateData}>
         <div className="mt-4 flex flex-col gap-4">
           <div>
-            <label className="text-black dark:text-white" htmlFor="firstName">
-              First Name
-            </label>
+            <label htmlFor="firstName">First Name</label>
             <input
               id="firstName"
               name="firstName"
               type="text"
               placeholder="Enter first name"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
+              className="block w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
               onChange={handleChangeData}
               value={data.firstName}
               required
             />
           </div>
           <div>
-            <label className="text-black dark:text-white" htmlFor="lastName">
-              Last Name
-            </label>
+            <label htmlFor="lastName">Last Name</label>
             <input
               id="lastName"
               name="lastName"
               type="text"
               placeholder="Enter last name"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
+              className="block w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
               onChange={handleChangeData}
               value={data.lastName}
               required
             />
           </div>
           <div>
-            <label className="text-black dark:text-white" htmlFor="username">
-              Username
-            </label>
+            <label htmlFor="username">Username</label>
             <input
               id="username"
               name="username"
               type="text"
               placeholder="Enter username"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
+              className="block w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
               onChange={handleChangeData}
               value={data.username}
               required
             />
           </div>
           <div>
-            <label className="text-black dark:text-white" htmlFor="dob">
-              DOB
-            </label>
+            <label htmlFor="dob">DOB</label>
             <input
               id="dob"
               name="dob"
               type="date"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
+              className="block w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
               onChange={handleChangeData}
               value={data.dob}
               required
             />
           </div>
           <div>
-            <label className="text-black dark:text-white" htmlFor="gender">
-              Gender
-            </label>
+            <label htmlFor="gender">Gender</label>
             <select
               name="gender"
               id="gender"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
+              className="block w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
               onChange={handleChangeData}
               value={data.gender}
               required

@@ -46,42 +46,82 @@ const AddEntry = ({id, minBet, maxBet}: AddEntryProps) => {
 
   return (
     <section className="container mx-auto my-5">
-      <div className="bg-white dark:bg-black dark:shadow-white rounded shadow-lg p-8">
-        <div className="mb-5">
-          <h2 className="dark:text-white text-3xl font-bold">Add Entry</h2>
+      <div className="dark:shadow-gray-400 rounded shadow-md p-8">
+        <div className="mb-6">
+          <h2 className="text-3xl font-bold">Place Your Prediction</h2>
+          <p className="text-sm text-gray-500 mt-1">
+            Bet between <span className="font-semibold">{minBet}</span> and{" "}
+            <span className="font-semibold">{maxBet}</span>
+          </p>
         </div>
-        <form className="mb-6" onSubmit={handleAddEntry}>
-          <input
-            type="number"
-            className="w-full px-4 py-2 rounded-md border border-gray-300 mb-4"
-            placeholder="Bet amount"
-            min={minBet}
-            max={maxBet}
-            name="bet"
-            value={bet}
-            onChange={(e) => setBet(Number(e.target.value))}
-          />
-          <select
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
-            className="p-2 w-full mb-4 border border-gray-300"
-          >
-            <option value="" className="text-black">
-              Select your answer
-            </option>
-            <option value="yes" className="text-black">
-              Yes
-            </option>
-            <option value="no" className="text-black">
-              No
-            </option>
-          </select>
+        <form onSubmit={handleAddEntry} className="space-y-5">
+          <div>
+            <label className="block text-sm font-semibold mb-1">
+              Bet Amount
+            </label>
+            <input
+              type="number"
+              min={minBet}
+              max={maxBet}
+              name="bet"
+              value={bet}
+              onChange={(e) => setBet(Number(e.target.value))}
+              placeholder="Enter bet amount"
+              className="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold mb-2">
+              Your Prediction
+            </label>
+            <div className="grid grid-cols-2 gap-4">
+              <button
+                type="button"
+                onClick={() => setAnswer("yes")}
+                className={`p-3 rounded-md border font-semibold
+              ${
+                answer === "yes"
+                  ? "bg-green-600 text-white border-green-600"
+                  : "border-gray-300"
+              }`}
+              >
+                YES
+              </button>
+              <button
+                type="button"
+                onClick={() => setAnswer("no")}
+                className={`p-3 rounded-md border font-semibold
+              ${
+                answer === "no"
+                  ? "bg-red-600 text-white border-red-600"
+                  : "border-gray-300"
+              }`}
+              >
+                NO
+              </button>
+            </div>
+          </div>
+          {(bet || answer) && (
+            <div className="bg-gray-100 dark:bg-gray-800 rounded-md p-3 text-sm">
+              <p>
+                Bet: <span className="font-semibold">{bet || 0}</span>
+              </p>
+              <p>
+                Prediction:{" "}
+                <span className="font-semibold capitalize">
+                  {answer || "Not selected"}
+                </span>
+              </p>
+            </div>
+          )}
           <button
             type="submit"
-            className={`w-fit bg-${primaryColor}-700 text-white px-4 py-2 rounded-md hover:bg-${primaryColor}-800 transitions-colors disabled:bg-${primaryColor}-300`}
             disabled={isLoading}
+            className={`w-full py-3 rounded-md text-white font-semibold
+          bg-${primaryColor}-700 hover:bg-${primaryColor}-800
+          disabled:bg-${primaryColor}-300 transition-colors`}
           >
-            {isLoading ? "Processing..." : "Add Entry"}
+            {isLoading ? "Processing..." : "Place Bet"}
           </button>
         </form>
       </div>

@@ -175,7 +175,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <section className="container p-6 mx-auto my-5 shadow-lg rounded-md bg-white dark:bg-black text-black dark:text-white dark:shadow-white">
+    <section className="container p-6 mx-auto my-5 shadow-md rounded-md dark:shadow-gray-400">
       <h2 className="text-xl font-bold capitalize mb-3">Admin Dashboard</h2>
       <div className="flex items-center gap-3 flex-wrap">
         <div className="border p-4 rounded-md">

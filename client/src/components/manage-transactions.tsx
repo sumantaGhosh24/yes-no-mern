@@ -44,7 +44,7 @@ const ManageTransactions = ({
 
   if (transaction) {
     return (
-      <tr className="hover:bg-gray-50">
+      <tr className="hover:bg-gray-50 dark:hover:bg-gray-700">
         <td className="px-6 py-4 whitespace-nowrap">{transaction.id}</td>
         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
           {transaction.user}
@@ -59,7 +59,7 @@ const ManageTransactions = ({
         </td>
         <td className="px-6 py-4 whitespace-nowrap">
           <span
-            className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+            className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full uppercase ${
               statusStyle[transaction.status] as any
             }`}
           >
