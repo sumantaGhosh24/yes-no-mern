@@ -1,12 +1,19 @@
 import {Request, Response} from "express";
+import dotenv from "dotenv";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import nodemailer from "nodemailer";
+import {Resend} from "resend";
 
 import User from "../models/userModel";
 import {IReqAuth} from "../types";
 import {createAccessToken, createRefreshToken} from "../lib/utils";
 import {APIFeatures} from "../lib";
+
+dotenv.config();
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+const from = process.env.EMAIL as string;
 
 const userCtrl = {
   register: async (req: Request, res: Response) => {
@@ -73,16 +80,10 @@ const userCtrl = {
 
       const token = createAccessToken({id: newUser._id});
       const to = newUser.email;
-      let transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: process.env.EMAIL,
-          pass: process.env.PASSWORD,
-        },
-      });
-      await transporter.sendMail({
-        from: "Yes No || Register Verification",
-        to: to,
+
+      const {error} = await resend.emails.send({
+        from,
+        to,
         subject: "Email Verification Link - Yes No",
         html: `<!doctype html>
     <html lang=en>
@@ -123,6 +124,11 @@ const userCtrl = {
     </body>
     </html>`,
       });
+
+      if (error) {
+        res.json({message: "Error sending email."});
+        return;
+      }
 
       res.json({
         message:
@@ -170,7 +176,7 @@ const userCtrl = {
               "Now your account was activated login using your credentials.",
           });
           return;
-        }
+        },
       );
     } catch (error: any) {
       res.status(500).json({message: error.message});
@@ -219,15 +225,8 @@ const userCtrl = {
         maxAge: 10 * 60 * 1000,
       });
 
-      let transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: process.env.EMAIL,
-          pass: process.env.PASSWORD,
-        },
-      });
-      await transporter.sendMail({
-        from: "Yes No || Login Verification",
+      const {error} = await resend.emails.send({
+        from,
         to: user.email,
         subject: "Email Verification Link - Yes No",
         html: `<!doctype html>
@@ -269,6 +268,11 @@ const userCtrl = {
     </body>
     </html>`,
       });
+
+      if (error) {
+        res.json({message: "Error sending email."});
+        return;
+      }
 
       res.json({
         message: "A otp send to your email, enter the otp to login",
@@ -333,7 +337,7 @@ const userCtrl = {
               .json({message: "Invalid otp, please check your email again."});
             return;
           }
-        }
+        },
       );
     } catch (error: any) {
       res.status(500).json({message: error.message});
@@ -370,7 +374,7 @@ const userCtrl = {
           });
 
           res.json({accesstoken, ...us._doc});
-        }
+        },
       );
     } catch (error: any) {
       res.status(500).json({message: error.message});
@@ -403,16 +407,9 @@ const userCtrl = {
       }
 
       const check = createAccessToken({id: user._id});
-      let transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: process.env.EMAIL,
-          pass: process.env.PASSWORD,
-        },
-      });
 
-      await transporter.sendMail({
-        from: "Yes No || Forgot Password",
+      const {error} = await resend.emails.send({
+        from,
         to: user.email,
         subject: "Email Verification Link - Yes No",
         html: `<!doctype html>
@@ -455,6 +452,11 @@ const userCtrl = {
 </html>`,
       });
 
+      if (error) {
+        res.json({message: "Error sending email."});
+        return;
+      }
+
       res.json({
         message:
           "A forgot password link send to your email, click the email link to forgot your password.",
@@ -488,7 +490,7 @@ const userCtrl = {
 
           res.status(200).json({message: "Now set your new password."});
           return;
-        }
+        },
       );
     } catch (error: any) {
       res.status(500).json({message: error.message});
@@ -541,7 +543,7 @@ const userCtrl = {
             .status(200)
             .json({message: "Your password has been updated, now login."});
           return;
-        }
+        },
       );
     } catch (error: any) {
       res.status(400).json({message: error.message});
